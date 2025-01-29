@@ -18,10 +18,6 @@ function generateNewCanvas(size=16) {
 
             gridContainer.appendChild(rowDiv);
         }
-
-        function changePixelBackground(element) {
-            element.style.backgroundColor = "black";
-        }
     } else {
         alert("Invalid Input");
     }
