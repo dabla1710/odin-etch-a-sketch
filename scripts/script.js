@@ -1,23 +1,47 @@
-const gridContainer = document.querySelector("#canvas");
+function generateNewCanvas(size=16) {
+    const gridSize = Number(size);
+    if (Number.isInteger(gridSize) && gridSize > 0 && gridSize < 101) {
+        const gridContainer = document.querySelector("#canvas");
+        gridContainer.innerHTML="";
 
-const gridSize = 16;
+        rows: for (let i = 0; i < gridSize; i++) {
+            let rowDiv = document.createElement("div");
+            rowDiv.classList.add("row");
 
+            pixels: for (let j = 0; j < gridSize; j++) {
+                let newPixel = document.createElement("div");
+                newPixel.classList.add("pixel");
+                // newPixel.textContent = i*gridSize + j+1;
+                newPixel.onmouseover = () => newPixel.style.backgroundColor = "black";
+                rowDiv.appendChild(newPixel);
+            }
 
-rows: for (let i = 0; i < gridSize; i++) {
-    let rowDiv = document.createElement("div");
-    rowDiv.classList.add("row");
+            gridContainer.appendChild(rowDiv);
+        }
 
-    pixels: for (let j = 0; j < gridSize; j++) {
-        let newPixel = document.createElement("div");
-        newPixel.classList.add("pixel");
-        newPixel.textContent = i*gridSize + j+1;
-        newPixel.onmouseover = () => newPixel.style.backgroundColor = "black";
-        rowDiv.appendChild(newPixel);
+        function changePixelBackground(element) {
+            element.style.backgroundColor = "black";
+        }
+    } else {
+        alert("Invalid Input");
     }
-
-    gridContainer.appendChild(rowDiv);
 }
 
-function changePixelBackground(element) {
-    element.style.backgroundColor = "black";
-}
+const btnGenerateNewCanvas = document.querySelector("#new-canvas-btn");
+
+// btnGenerateNewCanvas.addEventListener(
+//     "click", () => {
+//         const textField = document.querySelector("#amount-of-pixels");
+//         const input = textField.textContent;
+//         generateNewCanvas(input);
+//     }
+// )
+
+btnGenerateNewCanvas.onclick = () => {
+        const textField = document.querySelector("#amount-of-pixels");
+        const input = textField.value;
+        console.log("Input Field:", input);
+        generateNewCanvas(input);
+};
+
+generateNewCanvas();
