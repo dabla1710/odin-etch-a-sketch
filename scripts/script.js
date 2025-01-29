@@ -11,7 +11,7 @@ rows: for (let i = 0; i < gridSize; i++) {
         let newPixel = document.createElement("div");
         newPixel.classList.add("pixel");
         newPixel.textContent = i*gridSize + j+1;
-        newPixel.addEventListener("hover", () => newPixel.style.backgroundColor = "black");
+        newPixel.onmouseover = () => newPixel.style.backgroundColor = "black";
         rowDiv.appendChild(newPixel);
     }
 
