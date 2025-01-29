@@ -19,7 +19,7 @@ function generateNewCanvas(size=16) {
             gridContainer.appendChild(rowDiv);
         }
     } else {
-        alert("Invalid Input");
+        alert("Invalid Input: Use a Number between 1 and 100");
     }
 }
 
